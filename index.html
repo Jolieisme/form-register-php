@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Đăng Ký Thông Tin</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mt-5" style="color:black">Form Đăng Ký Thông Tin</h2>
+      <form action="process.php" method="post">
+        <div class="row">
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="ho">Họ:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ho"
+                name="ho"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="ten">Tên:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ten"
+                name="ten"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="matkhau">Mật khẩu(>= 8 ký tự): </label>
+          <input
+            type="password"
+            class="form-control"
+            id="matkhau"
+            name="matkhau"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ngaysinh">Ngày Sinh:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="ngaysinh"
+                name="ngaysinh"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="gioitinh">Giới Tính:</label>
+              <select
+                class="form-control"
+                id="gioitinh"
+                name="gioitinh"
+                required
+              >
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Khác">Khác</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="thanhpho">Thành Phố:</label>
+              <select
+                class="form-control"
+                id="thanhpho"
+                name="thanhpho"
+                required
+              >
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+                <option value="Ninh Bình">Ninh Bình</option>
+                <option value="Hải Phòng">Hải Phòng</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Sở Thích:</label><br />
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="doc_sach"
+              name="sothich[]"
+              value="Đọc Sách"
+            />
+            <label class="form-check-label" for="doc_sach">Đọc Sách</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="nghe_nhac"
+              name="sothich[]"
+              value="Nghe Nhạc"
+            />
+            <label class="form-check-label" for="nghe_nhac">Nghe Nhạc</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="xem_phim"
+              name="sothich[]"
+              value="Xem Phim"
+            />
+            <label class="form-check-label" for="xem_phim">Xem Phim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="da_bong"
+              name="sothich[]"
+              value="Đá Bóng"
+            />
+            <label class="form-check-label" for="da_bong">Đá Bóng</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="bong_chuyen"
+              name="sothich[]"
+              value="Bóng Chuyền"
+            />
+            <label class="form-check-label" for="bong_chuyen"
+              >Bóng Chuyền</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="cau_long"
+              name="sothich[]"
+              value="Cầu Lông"
+            />
+            <label class="form-check-label" for="cau_long">Cầu Lông</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="mota">Mô tả bản thân:</label><br />
+          <textarea
+            class="form-control"
+            id="mota"
+            name="mota"
+            rows="4"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          onclick="return validateForm()"
+        >
+          Đăng ký
+        </button>
+        <button type="reset" class="btn btn-secondary">Đặt lại</button>
+      </form>
+    </div>
+    <script>
+      function validateForm() {
+        var email = document.getElementById("email").value;
+        var re =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!re.test(String(email).toLowerCase())) {
+          alert("Email không đúng định dạng!");
+          return false;
+        }
+
+        var password = document.getElementById("matkhau").value;
+        if (password.length < 8) {
+          alert("Mật khẩu phải có ít nhất 8 ký tự!");
+          return false;
+        }
+        var ten = document.getElementById("ten").value;
+        var re_ten =
+          /^[a-zA-ZàáạảãâầấẩẫăằắẳẵèéẹẻẽêềếểễìíịĩòóọỏõôồốổỗơờớởỡùúụủũưừứửữỳýỵỷỹđÀÁẠẢÃÂẦẤẪĂẰẮẲẴÈÉẸẺẼÊỀẾỂỄÌÍỊĨÒÓỌỎÕÔỒỐỔỖƠỜỚỞỠÙÚỤỦŨƯỪỨỬỮỲÝỴỶỸĐ ]+$/;
+        if (!re_ten.test(ten)) {
+          alert("Tên không được chứa số hoặc kí tự đặc biệt!");
+          return false;
+        }
+        var ho = document.getElementById("ho").value;
+        if (!re_ten.test(ho)) {
+          alert("Họ không được chứa số hoặc kí tự đặc biệt!");
+          return false;
+        }
+
+        var ngaysinh = document.getElementById("ngaysinh").value;
+
+        var ngaySinhDate = new Date(ngaysinh);
+
+        if (isNaN(ngaySinhDate.getTime())) {
+          alert("Ngày sinh không hợp lệ!");
+          return false;
+        }
+        var ngayMin = new Date("1900-01-01");
+        var ngayMax = new Date("2024-12-31");
+        if (ngaySinhDate < ngayMin || ngaySinhDate > ngayMax) {
+          alert(
+            "Ngày sinh phải nằm trong khoảng từ 01/01/1900 đến 31/12/2024!"
+          );
+          return false;
+        }
+
+        var thanhpho = document.getElementById("thanhpho").value;
+        if (thanhpho == "") {
+          alert("Vui lý chọn thành phố!");
+          return false;
+        }
+        var sothich = document.getElementsByName("sothich[]");
+        if (sothich.length == 0) {
+          alert("Vui lý chọn 1 sở thích!");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>
